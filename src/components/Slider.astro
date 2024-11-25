@@ -1,13 +1,13 @@
 ---
-import Car from "./icons/Car.astro";
-import Newton from "./icons/Newton.astro";
-
 const words = []; // Cambia estas palabras según tus necesidades
 ---
 
-<section class="max-w-[1024px] mx-auto h-[40vh] my-16">
-  <div class="flex items-center justify-center">
-    <div class="typing-container flex flex-col justify-center px-8 my-10">
+<section class="max-w-[1024px] flex items-center flex-col h-[100vh] mx-auto">
+  <div class="mt-8">
+    <img src="/n3.png" alt="" class="md:w-72 w-40" />
+  </div>
+  <div class="flex items-center justify-center p-5">
+    <div class="typing-container flex flex-col justify-center">
       <h2
         class="text-[70px] text-center font-Satisfy font-[600] text-green-500 md:text-[80px]"
       >
@@ -17,22 +17,12 @@ const words = []; // Cambia estas palabras según tus necesidades
       <!-- Cursor siempre visible -->
     </div>
   </div>
-  <div class="w-full flex justify-center gap-6 mt-9">
-    <button
-      class="flex gap-2 w-48 bg-gray-100 text-gray-800 border-gray-300 items-center justify-center px-3 py-2 text-base transition dark:text-white dark:bg-gray-800 border dark:border-gray-600 text-md hover:bg-gray-800 hover:border-gray-900 rounded-xl hover:text-white"
-      ><span class="mb-1"><Car /></span>MRU</button
-    >
-    <button
-      class="flex gap-2 w-48 bg-gray-100 text-gray-800 border-gray-300 items-center justify-center px-3 py-2 text-base transition dark:text-white dark:bg-gray-800 border dark:border-gray-600 text-md hover:bg-gray-800 hover:border-gray-900 rounded-xl hover:text-white"
-      ><span class=""><Newton /></span>Newton
-    </button>
-  </div>
 
   <script>
     let currentWordIndex = 0;
     const words = [
       "Isaac Newton",
-      "Movimiento Rectilineo Undforme",
+      "Movimiento Rectilineo Uniforme",
       "Galileo di Vincenzo Bonaiuti de' Galilei",
     ];
     const typingSpeed = 100; // Velocidad de escritura

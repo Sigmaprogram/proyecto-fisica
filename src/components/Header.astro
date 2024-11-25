@@ -3,7 +3,13 @@ import Nav from "./Nav.astro";
 import Slider from "./Slider.astro";
 ---
 
-<header>
+<header class="h-[100vh]">
+  <div class="z-[-1] absolute h-full w-full bg-slate-950">
+    <div
+      class="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_500px_at_50%_200px,#3e3e3e,transparent)]"
+    >
+    </div>
+  </div>
   <Nav />
   <Slider />
 </header>
