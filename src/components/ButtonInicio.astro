@@ -1,0 +1,29 @@
+---
+
+---
+
+<button
+  id="btnVolver"
+  class="rounded-full w-16 h-16 bg-white fixed z-[0] inset-[92%] top[80%] hidden"
+>
+  <a href="#inicio" class="w-full h-full rounded-full">
+    <img src="/flecha.png" alt="" />
+  </a>
+</button>
+
+<script>
+  const Volver = document.getElementById("btnVolver");
+
+  addEventListener("scroll", () => {
+    if (scrollY > 100) {
+      Volver.classList.remove("hidden");
+    }
+    if (scrollY < 100) {
+      Volver.classList.add("hidden");
+    }
+  });
+
+  Volver.addEventListener("click", () => {
+    Volver.classList.add("hidden");
+  });
+</script>

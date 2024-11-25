@@ -4,26 +4,78 @@
 
 <section
   id="mru"
-  class="h-[100vh] bg-gray-800 md:my-0 py-16 px-11 text-white text-xl"
+  class="h-[100vh] bg-gray-800 md:my-0 py-16 px-11 text-white text-xl sticky top-0"
 >
   <div class="max-w-[1024px] mx-auto flex flex-col gap-2">
     <h3 class="font-bold text-4xl mb-2">Movimiento Rectilineo Uniforme</h3>
     <p class="text-gray-400">
       Un auto viaja a una Velocidad constante de <span
         ><input
+          autocomplete="off"
+          id="input-velocidad"
           class="text-white w-14 px-2 py-1 bg-transparent border-b-2 p-0 m-0"
           type="text"
         /></span
       >
       KM/h, ¿en que tiempo a recorrido <span
         ><input
+          autocomplete="off"
+          id="input-distancia"
           class="text-white w-14 px-2 py-1 bg-transparent border-b-2 p-0"
           type="text"
         /></span
-      > Metros?
+      > Kilometros?
     </p>
   </div>
+  <div class="m-auto max-w-[1024px] flex flex-col gap-2 text-lg my-2">
+    <h4>Datos</h4>
+    <ul class="text-gray-400">
+      <li class="dtiempo">T = ?</li>
+      <li class="dvelocidad">V =</li>
+      <li class="ddistancia">D =</li>
+    </ul>
+    <h4>Formula</h4>
+    <p class="text-gray-400">T = D / V</p>
+    <p class="formula-datos text-gray-400"></p>
+    <h4>Resultado</h4>
+    <p class="resultado-tiempo text-gray-400"></p>
+  </div>
   <div class="max-w-[1024px] mx-auto m">
-    <button class="btn btn-soft btn-success">Calcular</button>
+    <button class="btn btn-soft btn-success calcular-tiempo">Calcular</button>
   </div>
 </section>
+<script>
+  // Lista de datos elementss
+  const dato_velocidad = document.querySelector(".dvelocidad");
+  const dato_tiempo = document.querySelector(".dtiempo");
+  const dato_distancia = document.querySelector(".ddistancia");
+  // inputs
+  const input_velocidad = document.getElementById("input-velocidad");
+  const input_distancia = document.getElementById("input-distancia");
+  // funcion calcular
+  function calcular_tiempo() {
+    let velocidad = input_velocidad.value;
+    let distancia = input_distancia.value;
+    // añadir datos a la lista
+
+    dato_velocidad.innerHTML = `V = ${velocidad} K/h`;
+    dato_distancia.innerHTML = `D = ${distancia} Km`;
+    dato_tiempo.innerHTML = `T = ?`;
+
+    // Formula con los datos
+    const formula_datos = document.querySelector(".formula-datos");
+    formula_datos.innerHTML = `T = ${distancia} Km / ${velocidad} K/h`;
+
+    // mostrar resultado
+    let resultado_calculo = distancia / velocidad;
+    const resultado = document.querySelector(".resultado-tiempo");
+    resultado.innerHTML = `T = ${resultado_calculo} H`;
+  }
+
+  // Evento en el boton calcular
+  const btnCalcular = document
+    .querySelector(".calcular-tiempo")
+    .addEventListener("click", () => {
+      calcular_tiempo();
+    });
+</script>
