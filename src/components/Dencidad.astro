@@ -1,0 +1,90 @@
+---
+---
+
+<section
+  id="densidad"
+  class="h-[100vh] bg-gray-800 md:my-0 py-16 px-11 text-white text-xl sticky top-0"
+>
+  <div class="max-w-[1024px] mx-auto flex flex-col gap-2">
+    <h3 class="font-bold text-4xl mb-2">Cálculo de Densidad del Suelo</h3>
+    <p class="text-gray-400">
+      Una muestra de tierra pesa <span
+        ><input
+          autocomplete="off"
+          id="input-masa"
+          class="text-white w-14 px-2 py-1 bg-transparent border-b-2 p-0 m-0"
+          type="text"
+          placeholder="1.5"
+        /></span
+      >
+      kg y ocupa un volumen de <span
+        ><input
+          autocomplete="off"
+          id="input-volumen"
+          class="text-white w-14 px-2 py-1 bg-transparent border-b-2 p-0"
+          type="text"
+          placeholder="0.001"
+        /></span
+      > m³. ¿Cuál es su densidad?
+    </p>
+    <p class="text-sm text-gray-500">Nota: 1 litro = 0.001 m³</p>
+  </div>
+  <div class="m-auto max-w-[1024px] flex flex-col gap-2 text-lg my-2">
+    <h4>Datos</h4>
+    <ul class="text-gray-400">
+      <li class="dmasa">m = ? kg</li>
+      <li class="dvolumen">V = ? m³</li>
+      <li class="ddensidad">ρ = ?</li>
+    </ul>
+    <h4>Formula</h4>
+    <p class="text-gray-400">ρ = m / V</p>
+    <p class="formula-datos text-gray-400"></p>
+    <h4>Resultado</h4>
+    <p class="resultado-densidad text-gray-400"></p>
+  </div>
+  <div class="max-w-[1024px] mx-auto m">
+    <button class="btn btn-soft btn-success calcular-densidad">Calcular</button>
+  </div>
+</section>
+<script>
+  // Lista de datos elements
+  const dato_masa = document.querySelector(".dmasa");
+  const dato_volumen = document.querySelector(".dvolumen");
+  const dato_densidad = document.querySelector(".ddensidad");
+  // inputs
+  const input_masa = document.getElementById("input-masa");
+  const input_volumen = document.getElementById("input-volumen");
+  
+  // funcion calcular
+  function calcular_densidad() {
+    let masa = parseFloat(input_masa.value) || 0;
+    let volumen = parseFloat(input_volumen.value) || 0;
+    
+    // añadir datos a la lista
+    dato_masa.innerHTML = `m = ${masa} kg`;
+    dato_volumen.innerHTML = `V = ${volumen} m³`;
+    dato_densidad.innerHTML = `ρ = ?`;
+
+    // Formula con los datos
+    const formula_datos = document.querySelector(".formula-datos");
+    formula_datos.innerHTML = `ρ = ${masa} kg / ${volumen} m³`;
+
+    // Calcular y mostrar resultado
+    if(volumen > 0) {
+      let resultado_calculo = masa / volumen;
+      const resultado = document.querySelector(".resultado-densidad");
+      resultado.innerHTML = `ρ = ${resultado_calculo.toFixed(2)} kg/m³`;
+    } else {
+      const resultado = document.querySelector(".resultado-densidad");
+      resultado.innerHTML = "Error: El volumen debe ser mayor que cero";
+    }
+  }
+
+  // Evento en el boton calcular
+  document.querySelector(".calcular-densidad")
+    .addEventListener("click", calcular_densidad);
+  
+  // Ejemplo precargado (1.5 kg en 0.001 m³ = 1 litro)
+  input_masa.value = "1.5";
+  input_volumen.value = "0.001";
+</script>

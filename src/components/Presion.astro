@@ -1,0 +1,78 @@
+---
+---
+
+<section
+  id="presion-agua"
+  class="h-[100vh] bg-zinc-700 md:my-0 py-16 px-11 text-white text-xl relative z-2"
+>
+  <div class="max-w-[1024px] mx-auto flex flex-col gap-2">
+    <h3 class="font-bold text-4xl mb-2">Presión del Agua Subterránea</h3>
+    <p class="text-gray-400">
+      ¿Qué presión ejerce el agua a <span
+        ><input
+          autocomplete="off"
+          id="input-profundidad"
+          class="text-white w-14 px-2 py-1 bg-transparent border-b-2 p-0 m-0"
+          type="text"
+          placeholder="2"
+        /></span
+      >
+      metros bajo tierra? (Densidad del agua = 1000 kg/m³, Gravedad = 9.81 m/s²)
+    </p>
+  </div>
+  <div class="m-auto max-w-[1024px] flex flex-col gap-2 text-lg my-2">
+    <h4>Datos</h4>
+    <ul class="text-gray-400">
+      <li class="dprofundidad">h =</li>
+      <li>ρ (agua) = 1000 kg/m³</li>
+      <li>g = 9.81 m/s²</li>
+      <li class="dpresion">P = ?</li>
+    </ul>
+    <h4>Formula</h4>
+    <p class="text-gray-400">P = ρ · g · h</p>
+    <p class="formula-datos text-gray-400"></p>
+    <h4>Resultado</h4>
+    <p class="resultado text-gray-400"></p>
+  </div>
+  <div class="max-w-[1024px] mx-auto m">
+    <button class="btn btn-soft btn-success calcular-presion">Calcular</button>
+  </div>
+</section>
+<script>
+  // Constantes
+  const DENSIDAD_AGUA = 1000; // kg/m³
+  const GRAVEDAD = 9.81; // m/s²
+
+  // Elementos de datos
+  const dato_profundidad = document.querySelector(".dprofundidad");
+  const dato_presion = document.querySelector(".dpresion");
+  
+  // Inputs
+  const input_profundidad = document.getElementById("input-profundidad");
+  
+  // Función calcular
+  function calcular_presion() {
+    let profundidad = parseFloat(input_profundidad.value) || 0;
+    
+    // Añadir datos a la lista
+    dato_profundidad.innerHTML = `h = ${profundidad} m`;
+    dato_presion.innerHTML = `P = ?`;
+
+    // Formula con los datos
+    const formula_datos = document.querySelector(".formula-datos");
+    formula_datos.innerHTML = `P = 1000 kg/m³ · 9.81 m/s² · ${profundidad} m`;
+
+    // Calcular y mostrar resultado
+    let resultado_calculo = DENSIDAD_AGUA * GRAVEDAD * profundidad;
+    const resultado = document.querySelector(".resultado");
+    
+    resultado.innerHTML = `P = ${resultado_calculo.toFixed(2)} Pa (Pascales)`;
+  }
+
+  // Evento en el botón calcular
+  document.querySelector(".calcular-presion")
+    .addEventListener("click", calcular_presion);
+  
+  // Precargar el ejemplo (2 metros)
+  input_profundidad.value = "2";
+</script>
